@@ -12,5 +12,7 @@ echo " Back Cam File is $back"
 echo " Left Cam File is $left"
 echo "Right Cam File is $right"
 echo "   Output File is $outputfile"
+echo "Press Any Key to Proceed"
+read ready
 
 ./ffmpeg -i $left -i $back -i $right -i $front -filter_complex "[0:v][1:v][2:v]hstack=inputs=3[v01];[v01]scale=1280:-1[v03];[3:v][v03]vstack=inputs=2[v]" -map "[v]" $outputfile
